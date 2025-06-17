@@ -1,30 +1,52 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
-    <title>Second Highest Element</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
-<body>
-<script>
-    function secondHighest(arr) {
-        if (arr.length < 2) return -Infinity;
-        const nums = arr.map(Number);
-        const uniqueNums = [...new Set(nums)];
-        if (uniqueNums.length < 2) return -Infinity;
-        uniqueNums.sort((a, b) => b - a);
-        return uniqueNums[1];
+
+<body>	
+	<script>
+		function secondHighest(arr) {
+		  let n = arr.length;
+
+    if (n < 2) {
+        return -Infinity;  
     }
 
-    function Main() {
-        var input = prompt("Enter the elements separated by spaces");
-        if (input === null || input.trim() === "") {
-            alert("No elements entered.");
-            return;
+      let fl = -Infinity; // First largest
+    let sl = -Infinity; // Second largest
+
+          for (let i = 0; i < n; i++) {
+        if (arr[i] > fl) {
+            sl = fl;
+            fl = arr[i];
+        } else if (arr[i] > sl && arr[i] < fl) { // Ensure proper second-largest selection
+            sl = arr[i];
         }
-        var arr = input.trim().split(/\s+/);
-        alert("Second highest element is: " + secondHighest(arr));
     }
 
-    Main();
+			return sl === -Infinity ? -Infinity : sl;
+			
+       
+		}
+
+		function Main() {
+				var n =  parseInt(prompt("Enter the number of elements"));
+			var arr = [];
+			for (var i = 0; i < n; i++) {
+				 arr[i] = Number(prompt("Enter element " + (i + 1)));
+			}
+			alert(secondHighest(arr));
+		}
+		Main();
+		
+	</script>
+
+    <script type="text/javascript" src="./script.js">
 </script>
+
 </body>
+
 </html>
