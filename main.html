@@ -4,27 +4,27 @@
     <title>Second Highest Element</title>
 </head>
 <body>
-    <script>
-        function secondHighest(arr) {
-            if (arr.length < 2) return -Infinity;
-            const nums = arr.map(Number);
-            const unique = new Set(nums);
-            if (unique.size < 2) return -Infinity;
-            const sorted = [...unique].sort((a, b) => b - a);
-            return sorted[1];
-        }
+<script>
+    function secondHighest(arr) {
+        if (arr.length < 2) return -Infinity;
+        const nums = arr.map(Number);
+        const uniqueNums = [...new Set(nums)];
+        if (uniqueNums.length < 2) return -Infinity;
+        uniqueNums.sort((a, b) => b - a);
+        return uniqueNums[1];
+    }
 
-        function Main() {
-            var input = prompt("Enter the elements separated by spaces");
-            if (input === null || input.trim() === "") {
-                alert("No elements entered.");
-                return;
-            }
-            var arr = input.trim().split(/\s+/);
-            alert("Second highest element is: " + secondHighest(arr));
+    function Main() {
+        var input = prompt("Enter the elements separated by spaces");
+        if (input === null || input.trim() === "") {
+            alert("No elements entered.");
+            return;
         }
+        var arr = input.trim().split(/\s+/);
+        alert("Second highest element is: " + secondHighest(arr));
+    }
 
-        Main();
-    </script>
+    Main();
+</script>
 </body>
 </html>
