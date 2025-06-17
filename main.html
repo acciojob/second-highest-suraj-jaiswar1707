@@ -1,32 +1,30 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <title>Second Highest Element</title>
 </head>
+<body>
+    <script>
+        function secondHighest(arr) {
+            if (arr.length < 2) return -Infinity;
+            const nums = arr.map(Number);
+            const unique = new Set(nums);
+            if (unique.size < 2) return -Infinity;
+            const sorted = [...unique].sort((a, b) => b - a);
+            return sorted[1];
+        }
 
-<body>	
-	<script>
-		function secondHighest(arr) {
-			//Write your code here
-			
-		}
+        function Main() {
+            var input = prompt("Enter the elements separated by spaces");
+            if (input === null || input.trim() === "") {
+                alert("No elements entered.");
+                return;
+            }
+            var arr = input.trim().split(/\s+/);
+            alert("Second highest element is: " + secondHighest(arr));
+        }
 
-		function Main() {
-			var n = prompt("Enter the number of elements");
-			var arr = [];
-			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1));
-			}
-			alert(secondHighest(arr));
-		}
-		Main();
-	</script>
-
-    <script type="text/javascript" src="./script.js">
-</script>
-
+        Main();
+    </script>
 </body>
-
 </html>
